@@ -14,10 +14,15 @@ from employees
 ;
 
 --3. Display last names and comments on employees managers:
-   a. for employees with president (ID 100) as direct manager - SMT
-   b. for lower level employees - their job IDs.
-   c. for president (ID 100) - CEO
+--   a. for employees with president (ID 100) as direct manager - SMT
+ --  b. for lower level employees - their job IDs.
+ --  c. for president (ID 100) - CEO
 
-select *
+
+Select last_name,
+    case when manager_id=100 then 'SMT'
+        when manager_id>100 then Job_id
+    else 'CEO'
+end as comment_manager
 from employees
 ;
